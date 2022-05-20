@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <div class="wrapper">
@@ -26,12 +26,19 @@
         </div>
 
         <div class="passwordOptions">
-          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-          <label for="vehicle1"> I have a bike</label><br>
-          <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-          <label for="vehicle2"> I have a car</label><br>
-          <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-          <label for="vehicle3"> I have a boat</label><br>
+          <input type="checkbox" id="lowercase" name="lowercase" value="lowercase">
+          <label for="lowercase"> Lowercase Letters</label><br>
+          <input type="checkbox" id="uppercase" name="uppercase" value="uppercase">
+          <label for="uppercase"> Uppercase Letters</label><br>
+          <input type="checkbox" id="numeric" name="numeric" value="numeric">
+          <label for="numeric"> Numbers</label><br>
+          <input type="checkbox" id="specialcharacters" name="specialcharacters" value="specialcharacters">
+          <label for="specialcharacters"> Special Characters</label><br>
+          <p>
+            <label>Enter a number between 8 and 128:
+              <input type="number" step="1" id="passwordlength" min="8" max="128">
+            </label>
+          </p>
           <br>
         </div>
 
@@ -40,6 +47,6 @@
         </div>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
