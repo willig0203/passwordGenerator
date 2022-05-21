@@ -10,11 +10,13 @@ let specialcharacters = document.getElementById('specialcharacters');
 let caseSelectedValid = false;
 let passwordLengthValid = false;
 
-var charactersU = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var charactersL = 'abcdefghijklmnopqrstuvwxyz';
-var charactersN = '0123456789';
-var charactersS = '!@#$%^&*()_+{}=?></.,';
+let charactersL = 'abcdefghijklmnopqrstuvwxyz';
+let charactersU = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let charactersN = '23456789';
+let charactersS = '!@#$%()';
+//" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 
+// events to validate input
 inputPasswordLen.addEventListener('change', function () {
   passwordLengthValidate();
 });
@@ -45,7 +47,7 @@ function passwordLengthValidate() {
     alert("Enter a number between 8 and 128.");
     return;
   }
-  if (passwordLength < "8" && passwordLength > "128") {
+  if (Number(passwordLength) < 8 || Number(passwordLength) > 128) {
     alert("Enter a number between 8 and 128.");
     passwordLengthValid = false;
   } else {
@@ -53,37 +55,54 @@ function passwordLengthValidate() {
   }
 };
 
-function getLowercaseLetters(){
-  Math.random().toString(36).slice(2, 7);
-}
-
+// validate and create password
 function generatePassword() {
-  if (!caseSelectedValid && !passwordLengthValid) {
+  if (!caseSelectedValid) {
     checkonecaselettersValidate();
+    return;
+  }
+  if (!passwordLengthValid) {
     passwordLengthValidate();
     return;
-  } else {
-    let ret = "";
+  }
 
-    for (var i = 0; i < passwordLength.value.length; i++) {
-      ret += chkBxlowercase.charAt(Math.floor(Math.random()
-        * passwordLength.value.length)
-      );
+  let randy = "";
+  let passwordLength = document.getElementById('passwordlength').value;
+  let options = 0;
 
-      return ret;
+  if (chkBxlowercase.checked) { options = options + 1; }
+  if (chkBxuppercase.checked) { options = options + 1; }
+  if (chkBxnumeric.checked) { options = options + 1; }
+  if (specialcharacters.checked) { options = options + 1; }
+
+  for (var i = 0; i < passwordLength; i++) {
+    if (chkBxlowercase.checked && randy.length < passwordLength) {
+      randy += charactersL[Math.floor(Math.random() * Number(charactersL.length))];
+    }
+    if (chkBxuppercase.checked && randy.length < passwordLength) {
+      randy += charactersU[Math.floor(Math.random() * Number(charactersU.length))];
+    }
+    if (chkBxnumeric.checked && randy.length < passwordLength) {
+      randy += charactersN[Math.floor(Math.random() * Number(charactersN.length))];
+    }
+    if (specialcharacters.checked && randy.length < passwordLength) {
+      randy += charactersS[Math.floor(Math.random() * Number(charactersS.length))];
     }
   }
+
+  return randy.split('').sort(function(){return 0.5-Math.random()}).join('');
 };
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  let password = generatePassword();
 
   if (!password){
+    alert('No Password Generated!')
     return;
   }
 
-  var passwordText = document.querySelector("#password");
+  let passwordText = document.querySelector("#password");
   passwordText.value = password;
 };
 
