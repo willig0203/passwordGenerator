@@ -15,7 +15,7 @@ CSS
 Javascript
 
 ## Website
-https://willig0203.github.io/ChallengeWeek02/
+https://willig0203.github.io/passwordGenerator/
 
 ## Contribution
 Gary Williams (Trademark GarywareLLC).
