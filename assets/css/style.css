@@ -118,6 +118,10 @@ button[disabled] {
   overflow: hidden;
 }
 
+input:invalid {
+  border: red solid 3px;
+}
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
