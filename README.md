@@ -1,7 +1,7 @@
 # My Password Generator
 
 ## Purpose
-Genereate a unique password based on the following options:
+Generate a unique password based on the following options:
 - Lowercase Letters
 - Uppercase Letters
 - Numbers
